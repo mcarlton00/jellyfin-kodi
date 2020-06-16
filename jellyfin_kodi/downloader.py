@@ -16,7 +16,6 @@ from jellyfin import Jellyfin
 from jellyfin import api
 from jellyfin.exceptions import HTTPException
 from helper import LazyLogger
-from helper.utils import JsonDebugPrinter
 
 #################################################################################################
 
@@ -125,9 +124,7 @@ def get_filtered_section(parent_id=None, media=None, limit=None, recursive=None,
     if extra is not None:
         params.update(extra)
 
-    value = _get("Users/{UserId}/Items", params, server_id)
-    LOG.info('Raw Playlist Contents: {}'.format(JsonDebugPrinter(value)))
-    return value
+    return _get("Users/{UserId}/Items", params, server_id)
 
 
 def get_movies_by_boxset(boxset_id):

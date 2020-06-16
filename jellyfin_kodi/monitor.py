@@ -199,6 +199,16 @@ class Monitor(xbmc.Monitor):
             result = downloader.get_filtered_section(data.get('Id'), data.get('Media'), data.get('Limit'),
                                                      data.get('Recursive'), data.get('Sort'), data.get('SortOrder'),
                                                      data.get('Filters'), data.get('Params'), data.get('ServerId'))
+            filtered_recursive = downloader.get_filtered_section(data.get('Id'), data.get('Media'), data.get('Limit'),
+                                                     True, data.get('Sort'), data.get('SortOrder'),
+                                                     data.get('Filters'), data.get('Params'), data.get('ServerId'))
+            no_filter = downloader._get("Users/{UserId}/Items", {'ParentId': data.get('Id')}, data.get('ServerId'))
+            no_filter_recursive = downloader._get("Users/{UserId}/Items", {'ParentId': data.get('Id'), 'Recursive': True}, data.get('ServerId'))
+
+            LOG.info('filtered playlist items found: {}'.format(result.get("TotalRecordCount")))
+            LOG.info('filtered_recursive playlist items found: {}'.format(filtered_recursive.get("TotalRecordCount")))
+            LOG.info('no_filter playlist items found: {}'.format(no_filter.get("TotalRecordCount")))
+            LOG.info('no_filter_recursive playlist items found: {}'.format(no_filter_recursive.get("TotalRecordCount")))
             self.void_responder(data, result)
 
         elif method == 'BrowseSeason':
