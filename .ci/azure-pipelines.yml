@@ -17,7 +17,10 @@ steps:
 # 
 - task: FileTransform@1
   inputs:
+    folderPath: ../
     xmlTransformationRules: '-transform ../.config/addon.xml.py2 -xml ../.config/addon.xml.template -result ../addon.xml'
+    fileType: 'xml'
+
 - script: ls
   displayName: 'Run a one-line script'
 
