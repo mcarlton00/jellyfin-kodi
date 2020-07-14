@@ -15,6 +15,9 @@ steps:
   clean: true
 
 # 
+- task: FileTransform@1
+  inputs:
+    xmlTransformationRules: '-transform' ../addon.xml.py2 -xml ../addon.xml.template -result ../addon.xml
 - script: ls
   displayName: 'Run a one-line script'
 

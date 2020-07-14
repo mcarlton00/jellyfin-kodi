@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0" xdt:Transform="Insert" />
+    <import addon="script.module.requests" version="2.22.0" xdt:Transform="Insert" />
+    <import addon="script.module.dateutil" version="2.8.1" xdt:Transform="Insert" />
+    <import addon="script.module.six" version="1.13.0" xdt:Transform="Insert" />
+    <import addon="script.module.kodi-six" xdt:Transform="Insert" />
+    <import addon="script.module.addon.signals" version="0.0.5" xdt:Transform="Insert" />
+    <import addon="script.module.futures" version="2.2.0" xdt:Transform="Insert" />
+  </requires>
+</addon>
