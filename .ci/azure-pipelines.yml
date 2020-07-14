@@ -21,8 +21,8 @@ steps:
     xmlTransformationRules: '-transform ../.config/addon.xml.py2 -xml ../.config/addon.xml.template -result ../addon.xml'
     fileType: 'xml'
 
-- script: ls
-  displayName: 'Run a one-line script'
+- script: cat addon.xml
+  displayName: 'Cat addon file'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
