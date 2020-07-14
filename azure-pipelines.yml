@@ -15,7 +15,7 @@ steps:
   clean: true
 
 # 
-- script: cat jellyfin-kodi/addon.xml
+- script: ls
   displayName: 'Run a one-line script'
 
 - script: |
