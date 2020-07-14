@@ -14,12 +14,15 @@ steps:
 - checkout: self
   clean: true
 
-# 
+# Modify
 - task: FileTransform@1
   inputs:
     folderPath: ../
     xmlTransformationRules: '-transform ../.config/addon.xml.py2 -xml ../.config/addon.xml.template -result ../addon.xml'
     fileType: 'xml'
+
+- script: ls
+  displayName: 'list repo files'
 
 - script: cat addon.xml
   displayName: 'Cat addon file'
