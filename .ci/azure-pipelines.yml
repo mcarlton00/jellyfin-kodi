@@ -31,6 +31,9 @@ steps:
 - script: ls ..
   displayName: 'list up a level'
 
+- script: find / -name 'addon.xml'
+  displayName: 'find'
+
 #- script: cat addon.xml
 #  displayName: 'Cat addon file'
 
