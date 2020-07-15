@@ -19,7 +19,7 @@ steps:
   displayName: 'Transform Py2'
   inputs:
     folderPath: '$(System.DefaultWorkingDirectory)/.config'
-    xmlTransformationRules: '-transform ../.config/py2.xml -xml ../.config/addon.xml.template -result ../addon.xml'
+    xmlTransformationRules: '-transform ../.config/py2.config -xml ../.config/template.config -result ../addon.config'
     fileType: 'xml'
 
 - script: ls .
