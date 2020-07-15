@@ -19,7 +19,7 @@ steps:
   displayName: 'Transform Py2'
   inputs:
     folderPath: '$(System.DefaultWorkingDirectory)'
-    xmlTransformationRules: '-transform ../.config/addon.xml.py2 -xml ../.config/addon.xml.template -result ../addon.xml'
+    xmlTransformationRules: '-transform ../.config/py2.xml -xml ../.config/addon.xml.template -result ../addon.xml'
     fileType: 'xml'
 
 - script: ls .
@@ -27,6 +27,9 @@ steps:
 
 - script: ls .config
   displayName: 'list config files'
+
+- script: ls ..
+  displayName: 'list up a level'
 
 #- script: cat addon.xml
 #  displayName: 'Cat addon file'
