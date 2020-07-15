@@ -18,7 +18,7 @@ steps:
 - task: FileTransform@1
   displayName: 'Transform Py2'
   inputs:
-    folderPath: '$(System.DefaultWorkingDirectory)'
+    folderPath: '$(System.DefaultWorkingDirectory)/.config'
     xmlTransformationRules: '-transform ../.config/py2.xml -xml ../.config/addon.xml.template -result ../addon.xml'
     fileType: 'xml'
 
