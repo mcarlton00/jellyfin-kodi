@@ -24,8 +24,8 @@ steps:
 - script: ls .
   displayName: 'list repo files'
 
-- script: ls ..
-  displayName: 'list higher repo files'
+- script: ls .config
+  displayName: 'list config files'
 
 #- script: cat addon.xml
 #  displayName: 'Cat addon file'
