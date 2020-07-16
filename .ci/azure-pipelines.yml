@@ -4,40 +4,26 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+- azure-pipelines
 
 pool:
   vmImage: 'ubuntu-latest'
 
+parameters:
+  python_versions: [ 'py2' ]
+
+
 steps:
-# Checkout Git Repo
-- checkout: self
-  clean: true
+  - ${{ each version in parameters.versions }}:
+    # Checkout Git Repo
+    - checkout: self
+      clean: true
 
-# Modify
-- task: FileTransform@1
-  displayName: 'Transform Py2'
-  inputs:
-    folderPath: '$(System.DefaultWorkingDirectory)/.config'
-    xmlTransformationRules: '-transform ../.config/py2.config -xml ../.config/template.config -result ../addon.config'
-    fileType: 'xml'
+    - script: python -m pip install --user pyyaml
+      displayName: 'Install PyYaml'
 
-- script: ls .
-  displayName: 'list repo files'
+    - script: python config/generate_addon.py ${{ version }}
+      displayName: 'Create addon.xml'
 
-- script: ls .config
-  displayName: 'list config files'
-
-- script: ls ..
-  displayName: 'list up a level'
-
-- script: pwd
-  displayName: 'show dir'
-
-#- script: cat addon.xml
-#  displayName: 'Cat addon file'
-
-#- script: |
-#    echo Add other tasks to build, test, and deploy your project.
-#    echo See https://aka.ms/yaml
-#  displayName: 'Run a multi-line script'
+    - script: ls .
+      displayName: 'List project dir'
