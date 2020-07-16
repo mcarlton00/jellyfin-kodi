@@ -3,6 +3,10 @@ parameters:
 
 steps:
   - ${{ each version in parameters.py_versions }}:
+    - task: usePythonVersion@0
+      inputs:
+        versionSpec: '3.6'
+
     # Checkout Git Repo
     - checkout: self
       clean: true
