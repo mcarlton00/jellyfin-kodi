@@ -4,6 +4,6 @@
 # https://aka.ms/yaml
 
 steps:
-  template: build.yml
-  parameters:
-    python_versions: [ 'py2' ]
+  - template: build.yml
+    parameters:
+      python_versions: [ 'py2' ]
