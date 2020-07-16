@@ -14,9 +14,9 @@ steps:
     - script: python3 -m pip install --user pyyaml
       displayName: 'Install PyYaml'
 
-    - script: python3 .config/generate_addon.py ${{ version }}
+    - script: python3 .config/generate_xml.py ${{ version }}
       displayName: 'Create addon.xml'
 
-    - script: ls .
-      displayName: 'List project dir'
+    - script: cat addon.xml
+      displayName: 'display addon.xml'
 
