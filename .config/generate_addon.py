@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import yaml
 import sys
+import os
 
 def indent(elem, level=0):
     '''
@@ -27,13 +28,15 @@ except IndexError:
     print('No version specified')
     sys.exit(1)
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 # Load template file
-with open('template.xml', 'r') as f:
+with open(f'{dir_path}/template.xml', 'r') as f:
     tree = ET.parse(f)
     root = tree.getroot()
 
 # Load version dependencies
-with open(f'{py_version}.yaml', 'r') as f:
+with open(f'{dir_path}/{py_version}.yaml', 'r') as f:
     deps = yaml.safe_load(f)
 
 # Populate xml template
@@ -47,4 +50,4 @@ indent(root)
 addon_version = root.attrib['version']
 root.attrib['version'] = f'{addon_version}-{py_version}'
 
-tree.write('../addon.xml', encoding='utf-8', xml_declaration=True)
+tree.write('addon.xml', encoding='utf-8', xml_declaration=True)
