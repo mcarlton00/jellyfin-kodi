@@ -10,7 +10,7 @@ steps:
     - script: python -m pip install --user pyyaml
       displayName: 'Install PyYaml'
 
-    - script: python config/generate_addon.py ${{ version }}
+    - script: python .config/generate_addon.py ${{ version }}
       displayName: 'Create addon.xml'
 
     - script: ls .
