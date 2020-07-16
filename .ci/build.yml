@@ -2,7 +2,7 @@ parameters:
   python_versions : []
 
 steps:
-  - ${{ each version in parameters.versions }}:
+  - ${{ each version in parameters.py_versions }}:
     # Checkout Git Repo
     - checkout: self
       clean: true

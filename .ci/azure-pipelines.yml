@@ -6,4 +6,4 @@
 steps:
   - template: build.yml
     parameters:
-      python_versions: [ 'py2' ]
+      py_versions: [ 'py2' ]
