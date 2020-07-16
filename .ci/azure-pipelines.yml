@@ -9,21 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-parameters:
-  python_versions: [ 'py2' ]
-
-
 steps:
-  - ${{ each version in parameters.versions }}:
-    # Checkout Git Repo
-    - checkout: self
-      clean: true
-
-    - script: python -m pip install --user pyyaml
-      displayName: 'Install PyYaml'
-
-    - script: python config/generate_addon.py ${{ version }}
-      displayName: 'Create addon.xml'
-
-    - script: ls .
-      displayName: 'List project dir'
+  template: build.yml
+  parameters:
+    python_versions: [ 'py2' ]
