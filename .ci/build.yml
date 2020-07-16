@@ -14,7 +14,7 @@ steps:
     - script: python3 -m pip install --user pyyaml
       displayName: 'Install PyYaml'
 
-    - script: ls *
+    - script: ls .config
       displayName: 'looky'
 
     - script: python3 .config/generate_xml.py ${{ version }}
