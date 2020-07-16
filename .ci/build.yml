@@ -15,8 +15,8 @@ steps:
       displayName: 'Install PyYaml'
 
     - script: python3 .config/generate_xml.py ${{ version }}
-      displayName: 'Create addon.xml'
+      displayName: 'Create ${{ version }} addon.xml'
 
     - script: cat addon.xml
-      displayName: 'display addon.xml'
+      displayName: 'display ${{ version }} addon.xml'
 
