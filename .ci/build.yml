@@ -7,10 +7,10 @@ steps:
     - checkout: self
       clean: true
 
-    - script: python -m pip install --user pyyaml
+    - script: python3 -m pip install --user pyyaml
       displayName: 'Install PyYaml'
 
-    - script: python .config/generate_addon.py ${{ version }}
+    - script: python3 .config/generate_addon.py ${{ version }}
       displayName: 'Create addon.xml'
 
     - script: ls .
