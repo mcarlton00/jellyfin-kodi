@@ -23,7 +23,7 @@ steps:
     - script: python3 jellyfin-kodi/.config/generate_xml.py ${{ version }}
       displayName: 'Create ${{ version }} addon.xml'
 
-    - script: cat addon.xml
+    - script: cat jellyfin-kodi/addon.xml
       displayName: 'display ${{ version }} addon.xml'
 
     - script: ls -la
