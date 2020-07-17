@@ -50,4 +50,4 @@ indent(root)
 addon_version = root.attrib['version']
 root.attrib['version'] = f'{addon_version}-{py_version}'
 
-tree.write('addon.xml', encoding='utf-8', xml_declaration=True)
+tree.write('jellyfin-kodi/addon.xml', encoding='utf-8', xml_declaration=True)
