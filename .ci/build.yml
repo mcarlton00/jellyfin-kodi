@@ -17,7 +17,7 @@ steps:
     - script: python3 jellyfin-kodi/.config/generate_xml.py ${{ py_version }}
       displayName: 'Create ${{ py_version }} addon.xml'
 
-    - script: zip -r plugin.video.jellyfin-version-${ py_version }}.zip jellyfin-kodi
+    - script: zip -r plugin.video.jellyfin-version-${{ py_version }}.zip jellyfin-kodi
       displayName: 'Create ${{ py_version }} zip file'
 
 #    - task: CopyFilesOverSSH@0
