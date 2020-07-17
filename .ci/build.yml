@@ -11,13 +11,16 @@ steps:
     - checkout: self
       clean: true
 
+    - script: pwd
+      displayName: 'dir'
+
     - script: python3 -m pip install --user pyyaml
       displayName: 'Install PyYaml'
 
     - script: ls -la
       displayName: 'looky'
 
-    - script: python3 .config/generate_xml.py ${{ version }}
+    - script: python3 jellyfin-kodi/.config/generate_xml.py ${{ version }}
       displayName: 'Create ${{ version }} addon.xml'
 
     - script: cat addon.xml
