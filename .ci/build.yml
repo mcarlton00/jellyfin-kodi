@@ -26,3 +26,9 @@ steps:
     - script: cat addon.xml
       displayName: 'display ${{ version }} addon.xml'
 
+    - script: ls -la
+      displayName: 'looky2'
+
+    - script: ls -la jellyfin-kodi
+      displayName: 'looky3'
+
