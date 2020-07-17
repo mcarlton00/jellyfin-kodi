@@ -39,15 +39,27 @@ with open(f'{dir_path}/template.xml', 'r') as f:
 with open(f'{dir_path}/{py_version}.yaml', 'r') as f:
     deps = yaml.safe_load(f)
 
+# Load version and changelog
+with open('jellyfin-kodi/release.yaml', 'r') as f:
+    data = yaml.safe_load(f)
+
 # Populate xml template
 for dep in deps:
     ET.SubElement(root.find('requires'), 'import', attrib=dep)
 
+# Update version string
+addon_version = data.get('version')
+root.attrib['version'] = f'{addon_version}-{py_version}'
+
+# Changelog
+changelog = data.get('changelog')
+for section in root.findall('extension'):
+    news = section.findall('news')
+    if news:
+        news[0].text = f'Changelog:\n{changelog}'
+
 # Format xml tree
 indent(root)
 
-# Update version string
-addon_version = root.attrib['version']
-root.attrib['version'] = f'{addon_version}-{py_version}'
-
+# Write addon.xml
 tree.write('jellyfin-kodi/addon.xml', encoding='utf-8', xml_declaration=True)

@@ -1,0 +1,4 @@
+version: '0.5.8'
+changelog: |
+  #322 Force filter parameter during incremental sync
+  #323 do things
