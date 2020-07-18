@@ -31,6 +31,10 @@ steps:
     - script: zip -r plugin.video.jellyfin-$(ReleaseVersion_${{ py_version }}.out)-${{ py_version }}.zip jellyfin-kodi
       displayName: 'Create ${{ py_version }} zip file'
 
+    - script: ls .
+      displayName: 'home dir 2'
+
+
 #    - task: CopyFilesOverSSH@0
 #      displayName: 'Upload to repo server'
 #      inputs:
