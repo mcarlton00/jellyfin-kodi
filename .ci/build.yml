@@ -2,17 +2,17 @@ parameters:
   python_versions : []
 
 steps:
+  - task: usePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
+
+  - task: Bash@3
+    name: ReleaseVersion
+    inputs:
+      script: grep 'version' release.yaml | awk '{print $2}' | tr -d \'
+      workingDirectory: jellyfin-kodi
+
   - ${{ each py_version in parameters.py_versions }}:
-    - task: usePythonVersion@0
-      inputs:
-        versionSpec: '3.6'
-
-    - task: Bash@3
-      name: ReleaseVersion
-      inputs:
-        script: grep 'version' release.yaml | awk '{print $2}' | tr -d \'
-        workingDirectory: jellyfin-kodi
-
     - checkout: self
       clean: true
 
