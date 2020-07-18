@@ -19,6 +19,7 @@ steps:
     - task: Bash@3
       name: ReleaseVersion_${{ py_version }}
       inputs:
+        targetType: 'inline'
         script: grep 'version' jellyfin-kodi/release.yaml | awk '{print $2}' | tr -d \'
 
     - script: python3 -m pip install --user pyyaml
