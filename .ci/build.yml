@@ -17,7 +17,7 @@ steps:
       displayName: 'git dir'
 
     - script: export RELEASE_VERSION=$(grep 'version' jellyfin-kodi/release.yaml | awk '{print $2}' | tr -d \')
-      displayName: ReleaseVersion_${{ py_version }}
+      displayName: ReleaseVersion
 
     - script: python3 -m pip install --user pyyaml
       displayName: 'Install PyYaml'
@@ -25,7 +25,7 @@ steps:
     - script: python3 jellyfin-kodi/.config/generate_xml.py ${{ py_version }}
       displayName: 'Create ${{ py_version }} addon.xml'
 
-    - script: 'echo $ReleaseVersion'
+    - script: 'echo $RELEASE_VERSION'
       displayName: 'echo 1'
 
       #- script: 'echo $[ReleaseVersion_py2.out]'
