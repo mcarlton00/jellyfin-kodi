@@ -11,7 +11,7 @@ steps:
       clean: true
 
     - task: Bash@3
-      name: ReleaseVersion-${{ py_version }}
+      name: ReleaseVersion_${{ py_version }}
       inputs:
         script: grep 'version' release.yaml | awk '{print $2}' | tr -d \'
         workingDirectory: jellyfin-kodi
@@ -22,7 +22,7 @@ steps:
     - script: python3 jellyfin-kodi/.config/generate_xml.py ${{ py_version }}
       displayName: 'Create ${{ py_version }} addon.xml'
 
-    - script: zip -r plugin.video.jellyfin-$(ReleaseVersion-${{ py_version }}.out)-${{ py_version }}.zip jellyfin-kodi
+    - script: zip -r plugin.video.jellyfin-$(ReleaseVersion_${{ py_version }}.out)-${{ py_version }}.zip jellyfin-kodi
       displayName: 'Create ${{ py_version }} zip file'
 
 #    - task: CopyFilesOverSSH@0
