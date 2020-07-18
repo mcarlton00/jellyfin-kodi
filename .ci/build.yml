@@ -10,6 +10,12 @@ steps:
     - checkout: self
       clean: true
 
+    - script: ls .
+      displayName: 'home dir'
+
+    - script: ls jellyfin-kodi
+      displayName: 'git dir'
+
     - task: Bash@3
       name: ReleaseVersion_${{ py_version }}
       inputs:
