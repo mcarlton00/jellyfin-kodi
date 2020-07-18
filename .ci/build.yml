@@ -37,7 +37,7 @@ steps:
 
     - script: |
         export RELEASE_VERSION=$(grep 'version' jellyfin-kodi/release.yaml | awk '{print $2}' | tr -d \')
-        zip -r plugin.video.jellyfin-${{ReleaseVersion_${{ py_version }}.out}}-${{ py_version }}.zip jellyfin-kodi
+        zip -r plugin.video.jellyfin-$RELEASE_VERSION-${{ py_version }}.zip jellyfin-kodi
       displayName: 'Create ${{ py_version }} zip file'
 
     - script: ls .
