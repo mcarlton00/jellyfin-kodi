@@ -10,34 +10,13 @@ steps:
     - checkout: self
       clean: true
 
-      #- script: ls .
-      #  displayName: 'home dir'
-
-      #- script: ls jellyfin-kodi
-      #  displayName: 'git dir'
-
     - script: python3 -m pip install --user pyyaml
       displayName: 'Install PyYaml'
 
     - script: python3 jellyfin-kodi/.config/generate_xml.py ${{ py_version }}
       displayName: 'Create ${{ py_version }} addon.xml'
 
-      #- script: |
-      #    echo $RELEASE_VERSION
-      #  displayName: 'echo 1'
-
-      #- script: 'echo $[ReleaseVersion_py2.out]'
-      #  displayName: 'echo 2'
-
-      #- script: 'echo $(ReleaseVersion_$(py_version).out)'
-      #  displayName: 'echo 3'
-
-      #- script: 'echo $[ReleaseVersion_$[py_version].out]'
-      #  displayName: 'echo 4'
-
-    - script: |
-        export RELEASE_VERSION=$(grep 'version' jellyfin-kodi/release.yaml | awk '{print $2}' | tr -d \')
-        zip -r plugin.video.jellyfin-$RELEASE_VERSION-${{ py_version }}.zip jellyfin-kodi
+    - script: zip -r plugin.video.jellyfin-${{ py_version }}.zip jellyfin-kodi
       displayName: 'Create ${{ py_version }} zip file'
 
     - script: ls .
