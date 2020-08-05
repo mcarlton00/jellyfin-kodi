@@ -145,10 +145,10 @@ class API(object):
         })
 
     def get_sync_play(self):
-        return self._post("SyncPlay/none/ListGroups")
+        return self._post("SyncPlay/ListGroups")
 
     def join_sync_play(self, params):
-        return self._post("SyncPlay/none/JoinGroup", params)
+        return self._post("SyncPlay/JoinGroup", params)
 
     def get_sessions(self):
         return self.sessions(params={'ControllableByUserId': "{UserId}"})
