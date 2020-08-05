@@ -68,6 +68,7 @@ class Events(object):
             get_video_extras(jellyfin_id, jellyfin_path, server)
 
         elif mode == 'play':
+            #import web_pdb; web_pdb.set_trace()
 
             item = TheVoid('GetItem', {'Id': params['id'], 'ServerId': server}).get()
             Actions(server).play(item, params.get('dbid'), params.get('transcode') == 'true', playlist=params.get('playlist') == 'true')
@@ -112,6 +113,9 @@ class Events(object):
             xbmc.executebuiltin('Addon.OpenSettings(plugin.video.jellyfin)')
         elif mode == 'adduser':
             add_user()
+        elif mode == 'joinsyncplay':
+            join_sync_play(params)
+
         elif mode == 'updatepassword':
             event('UpdatePassword')
         elif mode == 'thememedia':
@@ -175,6 +179,7 @@ def listing():
         else:
             directory(server['Name'], "plugin://plugin.video.jellyfin/?mode=browse&server=%s" % server['Id'], context=context)
 
+    directory(translate(33187), "plugin://plugin.video.jellyfin/?mode=joinsyncplay", False)
     directory(translate(33194), "plugin://plugin.video.jellyfin/?mode=managelibs", True)
     directory(translate(33134), "plugin://plugin.video.jellyfin/?mode=addserver", False)
     directory(translate(33054), "plugin://plugin.video.jellyfin/?mode=adduser", False)
@@ -901,3 +906,21 @@ def backup():
 
     LOG.info("backup completed")
     dialog("ok", "{jellyfin}", "%s %s" % (translate(33091), backup))
+
+def join_sync_play(params):
+    server = params.get('server')
+    sessions = TheVoid('GetSyncPlay', {}).get()
+    resp = dialog("select", translate(33188), ['{} --- {}'.format(x['PlayingItemName'], ','.join(x['Participants'])) for x in sessions])
+    if resp == -1:
+        # No syncplay session selected
+        return
+    session = sessions[resp]
+    group_id = session.get('GroupId')
+    item_id = session.get('PlayingItemId')
+    position_ticks = session.get('PositionTicks')
+    event('JoinSyncPlay', {'GroupId': group_id})
+
+    item = TheVoid('GetItem', {'Id': item_id, 'ServerId': server}).get()
+    #import web_pdb; web_pdb.set_trace()
+    #Actions(server).play(item)
+    Actions(server).play(item, params.get('dbid'), params.get('transcode') == 'true', playlist=params.get('playlist') == 'true')

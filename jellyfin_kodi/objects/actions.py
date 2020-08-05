@@ -65,6 +65,7 @@ class Actions(object):
 
                 raise IndexError
 
+            import web_pdb; web_pdb.set_trace()
             xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, self.stack[0][1])
             self.stack.pop(0)
         except IndexError:

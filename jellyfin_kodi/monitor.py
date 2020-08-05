@@ -61,7 +61,7 @@ class Monitor(xbmc.Monitor):
                               'PlayPlaylist', 'Play', 'GetIntros', 'GetAdditionalParts', 'RefreshItem', 'Genres',
                               'FavoriteItem', 'DeleteItem', 'AddUser', 'GetSession', 'GetUsers', 'GetThemes',
                               'GetTheme', 'Playstate', 'GeneralCommand', 'GetTranscodeOptions', 'RecentlyAdded',
-                              'BrowseSeason', 'LiveTV', 'GetLiveStream'):
+                              'BrowseSeason', 'LiveTV', 'GetLiveStream', 'GetSyncPlay', 'JoinSyncPlay'):
                 return
 
             data = json.loads(data)[0]
@@ -272,6 +272,14 @@ class Monitor(xbmc.Monitor):
 
         elif method == 'VideoLibrary.OnUpdate':
             on_update(data, server)
+
+        elif method == 'GetSyncPlay':
+            result = server.jellyfin.get_sync_play()
+            self.void_responder(data, result)
+
+        elif method == 'JoinSyncPlay':
+            #import web_pdb; web_pdb.set_trace()
+            result = server.jellyfin.join_sync_play({'GroupId': data.get('GroupId')})
 
     def void_responder(self, data, result):
 

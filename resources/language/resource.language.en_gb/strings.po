@@ -908,6 +908,14 @@ msgstr ""
 "The Kodi Sync Queue speeds up the start up sync. Other syncs are triggered by "
 "server events."
 
+msgctxt "#33187"
+msgid "Join SyncPlay session"
+msgstr "Join SyncPlay session"
+
+msgctxt "#33188"
+msgid "Select SyncPlay session"
+msgstr "Select SyncPlay session"
+
 msgctxt "#33191"
 msgid "Restart Jellyfin for Kodi to apply this change?"
 msgstr "Restart Jellyfin for Kodi to apply this change?"
