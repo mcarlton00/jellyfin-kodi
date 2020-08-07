@@ -23,7 +23,7 @@ steps:
         includeRootFolder: False
         archiveType: 'zip'
         tarCompression: 'none'
-        archiveFile: 'plugin.video.jellyfon-${ py_version }}.zip
+        archiveFile: 'plugin.video.jellyfon-${ py_version }}.zip'
 
     #- script: zip -r plugin.video.jellyfin-${{ py_version }}.zip jellyfin-kodi
     #  displayName: 'Create ${{ py_version }} zip file'
