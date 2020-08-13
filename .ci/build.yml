@@ -25,9 +25,9 @@ steps:
         tarCompression: 'none'
         archiveFile: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin-${{ py_version }}.zip'
 
-    - script: ls $(Build.ArtifactStagingDirectory
+    - script: 'ls $(Build.ArtifactStagingDirectory'
 
-    - script: ls $(Build.SourcesDirectory)
+    - script: 'ls $(Build.SourcesDirectory)'
 
       #- task: PublishPipelineArtifact@1
       #  displayName: 'Publish ${{ py_version }} artifact'
