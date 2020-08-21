@@ -29,4 +29,4 @@ steps:
       displayName: 'Publish ${{ py_version }} artifact'
       inputs:
         targetPath: 'jellyfin-kodi'
-        artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber).zip'
+        artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
