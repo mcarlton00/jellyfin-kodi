@@ -1,3 +1,6 @@
-.git*
+.github
+.editorconfig
+.env
 .ci
 .config
+tests
