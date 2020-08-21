@@ -1,6 +1,9 @@
-.github
-.editorconfig
-.env
+.artifactignore
 .ci
 .config
+.editorconfig
+.env
+.git
+.github
+.gitignore
 tests
