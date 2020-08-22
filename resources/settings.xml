@@ -28,11 +28,6 @@
 		<setting label="33176" type="lsep" />
 		<setting label="30157" id="enableCoverArt" type="bool" default="true" />
 		<setting label="33116" id="compressArt" type="bool" default="false" />
-		<setting id="enableMusic" visible="false" default="false" />
-		<setting id="LastIncrementalSync" visible="false" default="" />
-		<setting id="SyncInstallRunDone" visible="false" default="false" />
-		<setting id="groupedSets" visible="false" default="false" />
-		<setting id="platformDetected" visible="false" default="" />
 	</category>
 	
 	<category label="30516"><!-- Playback -->
@@ -100,5 +95,14 @@
 		<setting label="33104" type="lsep"/>
 		<setting label="33093" type="folder" id="backupPath" option="writeable" />
 		<setting label="33092" type="action" action="RunPlugin(plugin://plugin.video.jellyfin?mode=backup)" visible="!eq(-1,)" option="close" />
+	</category>
+	<category label="generic"><!-- Generic -->
+		<setting id="enableMusic" visible="false" default="false" />
+		<setting id="LastIncrementalSync" visible="false" default="" />
+		<setting id="SyncInstallRunDone" visible="false" default="false" />
+		<setting id="groupedSets" visible="false" default="false" />
+		<setting id="platformDetected" visible="false" default="" />
+		<setting id="MinimumSetup" visible="false" default="" />
+		<setting id="MusicRescan" visible="false" default="" />
 	</category>
 </settings>
