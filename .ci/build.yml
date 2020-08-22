@@ -17,7 +17,7 @@ steps:
       displayName: 'Create ${{ py_version }} addon.xml'
 
     - task: CopyFiles@2
-      displayName: 'Copy addon files'
+      displayName: 'Create clean addon directory'
       inputs:
         sourceFolder: 'jellyfin-kodi'
         contents: |
@@ -33,7 +33,7 @@ steps:
           !tests
           !tox.ini
         TargetFolder: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
-        #
+
     - task: ArchiveFiles@2
       displayName: 'Create ${{ py_version }} zip file'
       inputs:
@@ -43,18 +43,9 @@ steps:
         tarCompression: 'none'
         archiveFile: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin-${{ py_version }}.zip'
 
-
-        #- task: PublishPipelineArtifact@1
-        #  displayName: 'Publish ${{ py_version }} artifact'
-        #  inputs:
-        #    targetPath: 'jellyfin-kodi'
-        #    artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
-
-        #- task: DownloadPipelineArtifact@2
-        #  displayName: 'Download artifact'
-        #  inputs:
-        #    patterns: '**/*'
-
-    - script: 'ls ../*'
-      displayName: 'list staging'
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish ${{ py_version }} artifact'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin-${{ py_version }}.zip'
+        artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
 
