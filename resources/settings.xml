@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-
 	<category label="29999"><!-- Jellyfin -->
 		<setting label="30003" id="idMethod" type="enum" values="Manual" default="0" enable="false" />
 		<setting label="30024" id="username" type="text" default="" visible="true" enable="false" />
@@ -30,6 +29,10 @@
 		<setting label="30157" id="enableCoverArt" type="bool" default="true" />
 		<setting label="33116" id="compressArt" type="bool" default="false" />
 		<setting id="enableMusic" visible="false" default="false" />
+		<setting id="LastIncrementalSync" visible="false" default="" />
+		<setting id="SyncInstallRunDone" visible="false" default="false" />
+		<setting id="groupedSets" visible="false" default="false" />
+		<setting id="platformDetected" visible="false" default="" />
 	</category>
 	
 	<category label="30516"><!-- Playback -->
@@ -98,5 +101,4 @@
 		<setting label="33093" type="folder" id="backupPath" option="writeable" />
 		<setting label="33092" type="action" action="RunPlugin(plugin://plugin.video.jellyfin?mode=backup)" visible="!eq(-1,)" option="close" />
 	</category>
-
 </settings>
