@@ -20,6 +20,7 @@ steps:
       displayName: 'Create clean addon directory'
       inputs:
         sourceFolder: 'jellyfin-kodi'
+        cleanTargetFolder: true
         contents: |
           **/*
           !**/.ci
