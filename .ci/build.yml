@@ -34,8 +34,8 @@ steps:
     - task: DownloadPipelineArtifact@2
       displayName: 'Download artifact'
       inputs:
-        patterns: '*'
+        patterns: '**/*'
 
-    - script: ls .
+    - script: ls ../*
       displayName: 'list home'
 
