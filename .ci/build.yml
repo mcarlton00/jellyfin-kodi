@@ -22,14 +22,11 @@ steps:
         sourceFolder: 'jellyfin-kodi'
         contents: |
           **/*
-          !.ci
-          !.config
+          !**/.ci
+          !**/.config
           !.git
-          !.github
-          !.gitignore
-          !requirements-dev.txt
-          !tests
-          !tox.ini
+          !**/.github
+          !**/.gitignore
         TargetFolder: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
 
     - task: ArchiveFiles@2
