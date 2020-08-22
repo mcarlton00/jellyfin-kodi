@@ -25,8 +25,7 @@ steps:
           **/*
           !**/.ci
           !**/.config
-          !**/.github
-          !**/.gitignore
+          !**/.git*
         TargetFolder: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
 
     - task: ArchiveFiles@2
