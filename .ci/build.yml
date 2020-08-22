@@ -23,9 +23,9 @@ steps:
         cleanTargetFolder: true
         contents: |
           **/*
-          !**/.ci
-          !**/.config
-          !**/.git*
+          !**/.ci/*
+          !**/.config/*
+          !**/.git**
         TargetFolder: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
 
     - task: ArchiveFiles@2
