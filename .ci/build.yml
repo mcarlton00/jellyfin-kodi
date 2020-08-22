@@ -46,6 +46,6 @@ steps:
     - task: PublishPipelineArtifact@1
       displayName: 'Publish ${{ py_version }} artifact'
       inputs:
-        targetPath: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin-${{ py_version }}.zip'
+        targetPath: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
         artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
 
