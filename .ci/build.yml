@@ -31,5 +31,5 @@ steps:
         targetPath: 'jellyfin-kodi'
         artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
 
-    - script: ls ../*
+    - script: ls ../../*
       displayName: 'list all'
