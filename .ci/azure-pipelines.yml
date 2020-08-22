@@ -8,7 +8,7 @@ steps:
     parameters:
       py_versions: [ 'py2', 'py3' ]
 
-  - ${{ if startsWith(variables['Build.SourceBranch'], 'refs/tags') }}
+  - ${{ if startsWith(variables['Build.SourceBranch'], 'refs/tags') }}:
     - template: publish.yml
       parameters:
         py_versions: [ 'py2', 'py3' ]
