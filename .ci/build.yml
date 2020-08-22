@@ -30,3 +30,6 @@ steps:
       inputs:
         targetPath: 'jellyfin-kodi'
         artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
+
+    - script: ls .
+      displayName: 'list home'

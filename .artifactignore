@@ -6,4 +6,6 @@
 .git
 .github
 .gitignore
+requirements-dev.txt
 tests
+tox.ini
