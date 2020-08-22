@@ -54,6 +54,6 @@ steps:
         #  inputs:
         #    patterns: '**/*'
 
-    - script: 'ls ${{Build.ArtifactStagingDirectory}}'
+    - script: 'ls ../*'
       displayName: 'list staging'
 
