@@ -31,5 +31,11 @@ steps:
         targetPath: 'jellyfin-kodi'
         artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
 
-    - script: ls ../../*
-      displayName: 'list all'
+    - task: DownloadPipelineArtifact@2
+      displayName: 'Download artifact'
+      inputs:
+        patterns: '**/*.zip'
+
+    - script: ls .
+      displayName: 'list home'
+
