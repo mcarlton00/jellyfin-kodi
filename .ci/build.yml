@@ -23,10 +23,10 @@ steps:
         cleanTargetFolder: true
         contents: |
           **/*
-          !**/.ci/*
-          !**/.config/*
-          !**/.git/*
-          !**/.github/*
+          !.ci/*
+          !.config/*
+          !.git/*
+          !.github/*
         TargetFolder: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
 
     - script: 'ls -la $(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
