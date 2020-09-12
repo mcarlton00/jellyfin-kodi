@@ -9,11 +9,11 @@ steps:
         sshEndpoint: repository
         sourceFolder: '$(Build.ArtifactStagingDirectory)'
         contents: 'plugin.video.jellyfin-${{ py_version }}.zip'
-        targetFolder: '/srv/repository/incoming/kodi'
+        targetFolder: '/media/Uploads'
 
-    - task: SSH@0
-      displayName: 'Add to Kodi repo'
-      inputs:
-        sshEndpoint: repository
-        runOptions: 'commands'
-        commands: 'python3 /usr/local/bin/kodirepo add /srv/repository/incoming/kodi/plugin.video.jellyfin-${{ py_version }}.zip --datadir /srv/repository/releases/client/kodi/${{ py_version }}'
+#    - task: SSH@0
+#      displayName: 'Add to Kodi repo'
+#      inputs:
+#        sshEndpoint: repository
+#        runOptions: 'commands'
+#        commands: 'python3 /usr/local/bin/kodirepo add /media/Uploads/plugin.video.jellyfin-${{ py_version }}.zip --datadir /home/azure/kodi/${{ py_version }}'
