@@ -29,6 +29,9 @@ steps:
           !**/.github/*
         TargetFolder: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
 
+    - script: 'ls -la $(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
+      displayName: 'WHAT ARE YOU'
+
     - task: ArchiveFiles@2
       displayName: 'Create ${{ py_version }} zip file'
       inputs:
