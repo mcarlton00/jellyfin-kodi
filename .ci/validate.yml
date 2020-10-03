@@ -6,7 +6,7 @@ steps:
   - script: ls .
     displayName: show me the things
 
-  - script: python -m pip install requirements-dev.txt
+  - script: python -m pip install -r requirements-dev.txt
     displayName: 'Install the things'
 
   - script: |
