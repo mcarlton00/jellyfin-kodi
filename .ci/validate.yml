@@ -10,9 +10,7 @@ steps:
     displayName: 'Install the things'
 
   - script: |
-      rm flake8.output
-      flake8 . --statistics --output-file=flake8.output && echo "::set-output name=lint::ok" || echo "::set-output name=lint::error"
-      cat flake8.output | awk -F: '{ if ($0 ~ /^\./) { gsub(/^[ \t]+/,"",$4); print "::error file=" $1 ",line=" $2 ",col=" $3 "::" $4 } else { print $0 } }'
+      flake8 . --statistics
     displayName: 'Lint me, daddy'
 
   - script: |
