@@ -12,13 +12,13 @@ steps:
   - script: |
       flake8 . --statistics
     displayName: 'Lint me, daddy'
-    failOnStdErr: false
+    failOnStderr: false
 
   - script: |
       rm ../test_results.xml
       pytest --junitxml=../test_results.xml
     displayName: 'Tests, glorious tests'
-    failOnStdErr: false
+    failOnStderr: false
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
