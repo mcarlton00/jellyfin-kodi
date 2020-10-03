@@ -12,14 +12,16 @@ steps:
   - script: |
       flake8 . --statistics
     displayName: 'Lint me, daddy'
+    failOnStdErr: false
 
   - script: |
       rm ../test_results.xml
       pytest --junitxml=../test_results.xml
     displayName: 'Tests, glorious tests'
+    failOnStdErr: false
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
-      testResultsFiles: 'test_results.xml'
+      testResultsFiles: '../test_results.xml'
       testRunTitle: 'Publish test results for Python $(python.version)'
