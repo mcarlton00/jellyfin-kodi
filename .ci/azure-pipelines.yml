@@ -8,6 +8,9 @@ trigger:
       - '*'
 
 steps:
+  # Run tests and linting
+  - template: validate.yml
+
   # On every PR, build the addon and make it available for download as an artifact
   - template: build.yml
     parameters:
