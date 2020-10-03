@@ -3,7 +3,7 @@ steps:
     inputs:
       versionSpec: '$(python.version)'
 
-  - task: python -m pip install jellyfin-kodi/requirements-dev.txt
+  - script: python -m pip install jellyfin-kodi/requirements-dev.txt
     displayName: 'Install the things'
 
   - script: |
