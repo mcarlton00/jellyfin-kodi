@@ -6,7 +6,7 @@ steps:
   - script: ls .
     displayName: show me the things
 
-  - script: python -m pip install jellyfin-kodi/requirements-dev.txt
+  - script: python -m pip install requirements-dev.txt
     displayName: 'Install the things'
 
   - script: |
@@ -14,13 +14,11 @@ steps:
       flake8 . --statistics --output-file=flake8.output && echo "::set-output name=lint::ok" || echo "::set-output name=lint::error"
       cat flake8.output | awk -F: '{ if ($0 ~ /^\./) { gsub(/^[ \t]+/,"",$4); print "::error file=" $1 ",line=" $2 ",col=" $3 "::" $4 } else { print $0 } }'
     displayName: 'Lint me, daddy'
-    workingDirectory: jellyfin-kodi
 
   - script: |
       rm ../test_results.xml
       pytest --junitxml=../test_results.xml
     displayName: 'Tests, glorious tests'
-    workingDirectory: jellyfin-kodi
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
