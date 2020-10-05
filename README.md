@@ -97,3 +97,5 @@ Detailed installation instructions can be found in the [Jellyfin Client Document
 ### Known limitations
 - Chapter images are missing unless native playback mode is used.
 - Certain add-ons that depend on seeing where your content is located will not work unless native playback mode is selected.
+
+idk i just need a commit
