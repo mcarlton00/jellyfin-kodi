@@ -44,3 +44,21 @@ steps:
         targetPath: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
         artifactName: 'plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
 
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish zipped ${{ py_version }} artifact'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin-${{ py_version }}.zip'
+        artifactName: 'zipped-plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish ${{ py_version }} build artifact'
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin'
+        artifactName: 'build-plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish zipped ${{ py_version }} build artifact'
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin-${{ py_version }}.zip'
+        artifactName: 'zipped-build-plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
+
