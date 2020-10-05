@@ -62,3 +62,11 @@ steps:
         pathToPublish: '$(Build.ArtifactStagingDirectory)/plugin.video.jellyfin-${{ py_version }}.zip'
         artifactName: 'zipped-build-plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
 
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifact: 'zipped-build-plugin.video.jellyfin-${{ py_version }}-$(Build.BuildNumber)'
+        path: $(Build.SourcesDirectory)
+
+    - script: ls -lh $(Build.SourcesDirectory)
+      displayName: 'Show me the things'
+
