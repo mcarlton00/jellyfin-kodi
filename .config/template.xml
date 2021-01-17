@@ -8,6 +8,10 @@
   <extension    point="xbmc.python.pluginsource"
                 library="default.py">
         <provides>video audio image</provides>
+        <medialibraryscanpath content="albums">/</medialibraryscanpath>
+        <medialibraryscanpath content="artists">/</medialibraryscanpath>
+        <medialibraryscanpath content="movies">/</medialibraryscanpath>
+        <medialibraryscanpath content="tvshows">/</medialibraryscanpath>
   </extension>
   <extension point="xbmc.service" library="service.py" start="login">
   </extension>

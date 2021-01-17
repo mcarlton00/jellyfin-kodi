@@ -48,6 +48,11 @@ class Events(object):
         except Exception:
             params = {}
 
+        # Prevent clean library from erasing all our stuff
+        if params.get('kodi_action', '') == 'check_exists':
+            LOG.debug('check_exists: params - {}'.format(params))
+            return xbmcplugin.setResolvedUrl(PROCESS_HANDLE, True, xbmcgui.ListItem())
+
         mode = params.get('mode')
         server = params.get('server')
 
