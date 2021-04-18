@@ -49,7 +49,20 @@ class Movies(Kodi):
         self.cursor.execute(QU.add_movie, args)
 
     def update(self, *args):
+        self.cursor.execute(QU.get_movie, (args[-1],))
+        old = self.cursor.fetchone()
         self.cursor.execute(QU.update_movie, args)
+        self.cursor.execute(QU.get_movie, (args[-1],))
+        new = self.cursor.fetchone()
+        changed = False
+        for index, value in enumerate(old):
+            if value != new[index]:
+                LOG.info('Movie {} has had column {} updated'.format(old[2], index))
+                LOG.info('Old value: {}'.format(value))
+                LOG.info('New value: {}'.format(new[index]))
+                changed = True
+        if not changed:
+            LOG.info('Movie {} was updated, but had no changes'.format(old[2]))
 
     def delete(self, kodi_id, file_id):
 

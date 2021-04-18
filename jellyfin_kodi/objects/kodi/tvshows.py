@@ -142,7 +142,23 @@ class TVShows(Kodi):
         self.cursor.execute(QU.add_episode, args)
 
     def update_episode(self, *args):
+        self.cursor.execute(QU.get_episode, (args[-1],))
+        old = self.cursor.fetchone()
+
         self.cursor.execute(QU.update_episode, args)
+
+        self.cursor.execute(QU.get_episode, (args[-1],))
+        new = self.cursor.fetchone()
+        changed = False
+        for index, value in enumerate(old):
+            if value != new[index]:
+                LOG.info('Episode {} has had column {} updated'.format(old[2], index))
+                LOG.info('Old value: {}'.format(value))
+                LOG.info('New value: {}'.format(new[index]))
+                changed = True
+        if not changed:
+            LOG.info('Episode {} was updated, but had no changes'.format(old[2]))
+
 
     def delete_tvshow(self, *args):
         self.cursor.execute(QU.delete_tvshow, args)

@@ -395,7 +395,12 @@ class Library(threading.Thread):
 
         try:
             # Get list of updates from server for synced library types and populate work queues
+            LOG.info('Retrieving changes for media types: {}'.format(', '.join(include)))
             result = self.server.jellyfin.get_sync_queue(last_sync, ",".join([x for x in query_filter]))
+            LOG.info('Number of items added: {}'.format(len(result.get('ItemsAdded'))))
+            LOG.info('Number of items updated: {}'.format(len(result.get('ItemsUpdated'))))
+            LOG.info('Number of items with updated userdata: {}'.format(len(result.get('UserDataChanged'))))
+            LOG.info('Number of items removed: {}'.format(len(result.get('ItemsRemoved'))))
 
             if result is None:
                 return True

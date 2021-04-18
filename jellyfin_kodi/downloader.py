@@ -319,7 +319,7 @@ class GetItemWorker(threading.Thread):
                     result = self.server.http.request(request, s)
 
                     for item in result['Items']:
-
+                        LOG.info('Retrieved item: {} - {}'.format(item.get('Type'), item.get('Name')))
                         if item['Type'] in self.output:
                             self.output[item['Type']].put(item)
                 except HTTPException as error:

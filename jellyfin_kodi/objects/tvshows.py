@@ -54,6 +54,7 @@ class TVShows(KodiDb):
             Process seasons.
             Apply series pooling.
         '''
+        LOG.info('TV Show Updated: {}'.format(item.get('Name')))
         server_address = self.server.auth.get_server_info(self.server.auth.server_id)['address']
         API = api.API(item, server_address)
         obj = self.objects.map(item, 'Series')
@@ -218,6 +219,7 @@ class TVShows(KodiDb):
 
             If the show is empty, try to remove it.
         '''
+        LOG.info('Season Updated: {}'.format(item.get('Name')))
         server_address = self.server.auth.get_server_info(self.server.auth.server_id)['address']
         API = api.API(item, server_address)
         obj = self.objects.map(item, 'Season')
@@ -254,6 +256,7 @@ class TVShows(KodiDb):
             Create additional entry for widgets.
             This is only required for plugin/episode.
         '''
+        LOG.info('Episode Updated: {}'.format(item.get('Name')))
         server_address = self.server.auth.get_server_info(self.server.auth.server_id)['address']
         API = api.API(item, server_address)
         obj = self.objects.map(item, 'Episode')

@@ -51,6 +51,7 @@ class MusicVideos(KodiDb):
             If we don't get the track number from Jellyfin, see if we can infer it
             from the sortname attribute.
         '''
+        LOG.info('MusicVideo Updated: {}'.format(item.get('Name')))
         server_address = self.server.auth.get_server_info(self.server.auth.server_id)['address']
         API = api.API(item, server_address)
         obj = self.objects.map(item, 'MusicVideo')
